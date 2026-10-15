@@ -2,11 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 ---
-<BaseLayout title="Contact | Site Template">
+<BaseLayout title="Contact | Wombat Robotics">
   <div class="max-w-lg py-16 sm:py-24">
     <h1 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Contact</h1>
     <p class="mt-4 text-slate-600 dark:text-slate-400">
-      Email <a class="font-medium text-indigo-600 underline dark:text-indigo-400" href={`mailto:${site.email}`}>{site.email}</a> and we'll reply within {site.replyTime}.
+      Email <a class="font-medium text-brand-600 underline dark:text-brand-400" href={`mailto:${site.email}`}>{site.email}</a> and we'll reply within {site.replyTime}.
     </p>
   </div>
 </BaseLayout>

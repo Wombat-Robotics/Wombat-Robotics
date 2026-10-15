@@ -14,6 +14,12 @@ html {
   scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 4rem);
 }
 
+/* Page, header and status-bar background. Edit these two values. */
+:root { --surface: 255 255 255; }
+@media (prefers-color-scheme: dark) {
+  :root { --surface: 0 0 0; }
+}
+
 /* Fills the phone status-bar area above the sticky header */
 body::before {
   content: "";
@@ -21,10 +27,10 @@ body::before {
   inset: 0 0 auto;
   height: env(safe-area-inset-top, 0px);
   z-index: 40;
-  background: rgb(255 255 255 / .9);
+  background: rgb(var(--surface) / .9);
   backdrop-filter: blur(8px);
 }
 
 @media (prefers-color-scheme: dark) {
-  body::before { background: rgb(15 23 42 / .9); }
+  body::before { background: rgba(40, 149, 65, 0.9); }
 }
