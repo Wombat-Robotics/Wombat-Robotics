@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import { url } from '../data/url';
+
+const features = ['First feature', 'Second feature', 'Third feature'];
+---
+<BaseLayout title="Site Template">
+  <div class="py-16 sm:py-24">
+    <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl dark:text-white">A headline that says what you do</h1>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Replace this with one or two sentences that explain who the site is for and what they can do here.</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href={url('/about/')} class="rounded-md bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-500">Learn more</a>
+      <a href={url('/contact/')} class="rounded-md border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="grid gap-6 pb-16 sm:grid-cols-3">
+    {features.map((title) => (
+      <FeatureCard title={title}>
+        Describe a benefit in plain language. Keep it to two or three lines.
+      </FeatureCard>
+    ))}
+  </div>
+</BaseLayout>
