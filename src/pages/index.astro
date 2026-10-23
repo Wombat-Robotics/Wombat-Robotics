@@ -4,22 +4,71 @@ import FeatureCard from '../components/FeatureCard.astro';
 import { url } from '../data/url';
 
 const features = ['First feature', 'Second feature', 'Third feature'];
+const phrases = [
+  "A robot shouldn't end with a design.",
+  'It should end with a team.',
+  // 'Inventors.',
+  // 'Investors.',
+  'Engineers.',
+  'People who change the world.',
+];
 ---
 <BaseLayout title="Wombat Robotics">
   <div class="py-16 sm:py-24">
-    <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl dark:text-white">A headline that says what you do</h1>
-    <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">Replace this with one or two sentences that explain who the site is for and what they can do here.</p>
+    <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl dark:text-white">Wombat Robotics</h1>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">We are a collegiate team competing at RPI building autonomous systems for the future</p>
     <div class="mt-8 flex flex-wrap gap-3">
       <a href={url('/about/')} class="rounded-md bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-500">Learn more</a>
       <a href={url('/contact/')} class="rounded-md border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800">Get in touch</a>
     </div>
   </div>
 
-  <div class="grid gap-6 pb-16 sm:grid-cols-3">
+  <!-- <div class="grid gap-6 pb-16 sm:grid-cols-3">
     {features.map((title) => (
       <FeatureCard title={title}>
         Describe a benefit in plain language. Keep it to two or three lines.
       </FeatureCard>
     ))}
+  </div> -->
+
+<div class="-skew-y-3 overflow-hidden bg-brand-600 py-8 will-change-transform">
+  <div class="marquee">
+    {[0, 1, 2, 3].map((i) => (
+      <div class="marquee-track text-xl font-medium text-white" aria-hidden={i > 0 ? 'true' : undefined}>
+        {phrases.map((p) => <span>{p}</span>)}
+      </div>
+    ))}
   </div>
+</div>
+
+<style>
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 4rem;
+    padding-right: 4rem;
+    white-space: nowrap;
+  }
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { animation: none; }
+  }
+</style>
+
+
+
+
 </BaseLayout>
